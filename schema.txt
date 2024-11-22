@@ -1,0 +1,159 @@
+CREATE TABLE IF NOT EXISTS public.file_details
+(
+    execution_id TEXT,
+    excel_id SERIAL PRIMARY KEY,
+    excel_name TEXT,
+    pdf_name_in_excel TEXT,
+    page_number_in_excel TEXT,
+    actual_pdf_name TEXT,
+    split_pdf TEXT,
+    status TEXT,
+    "timestamp" TIMESTAMP, 
+    remark TEXT
+);
+
+
+CREATE TABLE IF NOT EXISTS public.gonda_extraction_data
+(
+    excel_id integer,
+    page_number text COLLATE pg_catalog."default",
+    buyer_name text COLLATE pg_catalog."default",
+    buyer_address text COLLATE pg_catalog."default",
+    vendor_name text COLLATE pg_catalog."default",
+    vendor_address text COLLATE pg_catalog."default",
+    invoice_no text COLLATE pg_catalog."default",
+    invoice_date text COLLATE pg_catalog."default",
+    pkg_transmission_line_ss_substation_name text COLLATE pg_catalog."default",
+    supply_civil_services text COLLATE pg_catalog."default",
+    description_of_supply_services text COLLATE pg_catalog."default",
+    unit text COLLATE pg_catalog."default",
+    quantity text COLLATE pg_catalog."default",
+    rate text COLLATE pg_catalog."default",
+    invoice_value text COLLATE pg_catalog."default",
+    vat_gst text COLLATE pg_catalog."default",
+    service text COLLATE pg_catalog."default",
+    tax_gst text COLLATE pg_catalog."default",
+    advance text COLLATE pg_catalog."default",
+    retention text COLLATE pg_catalog."default",
+    net_value text COLLATE pg_catalog."default",
+    "timestamp" text COLLATE pg_catalog."default",
+    status text COLLATE pg_catalog."default",
+    remark text COLLATE pg_catalog."default",
+    invoice_type text COLLATE pg_catalog."default",
+    CONSTRAINT gonda_extraction_data_excel_id_fkey FOREIGN KEY (excel_id)
+        REFERENCES public.file_details (excel_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+
+
+
+
+-- Table: public.gonda_extraction1
+
+-- DROP TABLE IF EXISTS public.gonda_extraction1;
+
+CREATE TABLE IF NOT EXISTS public.gonda_extraction_data
+(
+    excel_id integer,
+    buyer_name text COLLATE pg_catalog."default",
+    buyer_address text COLLATE pg_catalog."default",
+    buyer_pan text COLLATE pg_catalog."default",
+    buyer_tin text COLLATE pg_catalog."default",
+    buyer_tax_number text COLLATE pg_catalog."default",
+    buyer_cst_number text COLLATE pg_catalog."default",
+    seller_name text COLLATE pg_catalog."default",
+    seller_address text COLLATE pg_catalog."default",
+    seller_pan text COLLATE pg_catalog."default",
+    seller_tin text COLLATE pg_catalog."default",
+    seller_tax_number text COLLATE pg_catalog."default",
+    seller_cst_number text COLLATE pg_catalog."default",
+    invoice_number text COLLATE pg_catalog."default",
+    invoice_date text COLLATE pg_catalog."default",
+    pkg_transmission_line_ss_substation_name text COLLATE pg_catalog."default",
+    supply_civil_services text COLLATE pg_catalog."default",
+    description text COLLATE pg_catalog."default",
+    unit text COLLATE pg_catalog."default",
+    quantity text COLLATE pg_catalog."default",
+    rate text COLLATE pg_catalog."default",
+    invoice_value text COLLATE pg_catalog."default",
+    vat_gst text COLLATE pg_catalog."default",
+    service_tax_gst text COLLATE pg_catalog."default",
+    gross_value text COLLATE pg_catalog."default",
+    advance text COLLATE pg_catalog."default",
+    retention text COLLATE pg_catalog."default",
+    net_value text COLLATE pg_catalog."default",
+    file_name text COLLATE pg_catalog."default",
+    "timestamp" text COLLATE pg_catalog."default",
+    invoice_type text COLLATE pg_catalog."default",
+    CONSTRAINT gonda_extraction_data_excel_id_fkey FOREIGN KEY (excel_id)
+        REFERENCES public.file_details (excel_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.gonda_extraction1
+    OWNER to postgres;
+
+
+------------------------------------------------------------------------------
+added 2 column 
+
+
+
+
+
+-- Table: public.gonda_extraction5
+
+-- DROP TABLE IF EXISTS public.gonda_extraction11_t;
+
+CREATE TABLE IF NOT EXISTS public.gonda_extraction11_t
+(
+    buyer_name text COLLATE pg_catalog."default",
+    buyer_address text COLLATE pg_catalog."default",
+    buyer_pan text COLLATE pg_catalog."default",
+    buyer_tin text COLLATE pg_catalog."default",
+    buyer_tax_number text COLLATE pg_catalog."default",
+    buyer_cst_number text COLLATE pg_catalog."default",
+    seller_name text COLLATE pg_catalog."default",
+    seller_address text COLLATE pg_catalog."default",
+    seller_pan text COLLATE pg_catalog."default",
+    seller_tin text COLLATE pg_catalog."default",
+    seller_tax_number text COLLATE pg_catalog."default",
+    seller_cst_number text COLLATE pg_catalog."default",
+    invoice_number text COLLATE pg_catalog."default",
+    invoice_date text COLLATE pg_catalog."default",
+    pkg_transmission_line_ss_substation_name text COLLATE pg_catalog."default",
+    supply_civil_services text COLLATE pg_catalog."default",
+    description text COLLATE pg_catalog."default",
+    unit text COLLATE pg_catalog."default",
+    quantity text COLLATE pg_catalog."default",
+    rate text COLLATE pg_catalog."default",
+    invoice_value text COLLATE pg_catalog."default",
+    vat_gst text COLLATE pg_catalog."default",
+    vat text COLLATE pg_catalog."default",
+    service_tax_gst text COLLATE pg_catalog."default",
+    education_cess text COLLATE pg_catalog."default",
+    he_education_cess text COLLATE pg_catalog."default",
+    gross_value text COLLATE pg_catalog."default",
+    advance text COLLATE pg_catalog."default",
+    retention text COLLATE pg_catalog."default",
+    net_value text COLLATE pg_catalog."default",
+    file_name text COLLATE pg_catalog."default",
+    "timestamp" text COLLATE pg_catalog."default",
+    invoice_type text COLLATE pg_catalog."default"
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.gonda_extraction11_t
+    OWNER to postgres;
+
+
+----------------------------------------------------------------------------------
+
+
+
+I hope you're doing well. I am writing to inform you that I had to take an unplanned leave on 30 sep due to a medical emergency in my family. The situation required my immediate attention, and I was unable to notify you in advance.I apologize for any inconvenience this may have caused and kindly request that you process this day as a leave of absence.

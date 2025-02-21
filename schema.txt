@@ -105,11 +105,11 @@ added 2 column
 
 
 
--- Table: public.gonda_extraction5
+-- Table: public.gonda_extraction23
 
--- DROP TABLE IF EXISTS public.gonda_extraction11_t;
+-- DROP TABLE IF EXISTS public.gonda_extraction23;
 
-CREATE TABLE IF NOT EXISTS public.gonda_extraction11_t
+CREATE TABLE IF NOT EXISTS public.gonda_extraction23
 (
     buyer_name text COLLATE pg_catalog."default",
     buyer_address text COLLATE pg_catalog."default",
@@ -148,12 +148,8 @@ CREATE TABLE IF NOT EXISTS public.gonda_extraction11_t
 
 TABLESPACE pg_default;
 
-ALTER TABLE IF EXISTS public.gonda_extraction11_t
+ALTER TABLE IF EXISTS public.gonda_extraction23
     OWNER to postgres;
 
 
 ----------------------------------------------------------------------------------
-
-
-
-I hope you're doing well. I am writing to inform you that I had to take an unplanned leave on 30 sep due to a medical emergency in my family. The situation required my immediate attention, and I was unable to notify you in advance.I apologize for any inconvenience this may have caused and kindly request that you process this day as a leave of absence.

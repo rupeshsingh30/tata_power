@@ -5,6 +5,7 @@ from database_utils import dbConnection,pullReport,getExcelId
 from config import loadConfig
 # from extraction import extraction
 
+
 def main(config, db_conn):
     excel_path = config['file_dir']['excel_path']
     temp_folder = config['file_dir']['temp_file']
@@ -23,7 +24,7 @@ def main(config, db_conn):
         print('No Excel files in this directory')
         return None
     
-    execution_id = 1000
+    execution_id = 23
 
     for file in os.listdir(excel_path):
         excel_file_path = os.path.join(excel_path, file)
@@ -33,7 +34,7 @@ def main(config, db_conn):
         fileCleaner(remove_files_path)
 
         ### Process Excel and split PDF
-        pdf_info = getPDFdetails(config, db_conn, execution_id, excel_file_path)  
+        pdf_info = getPDFdetails(config, db_conn, execution_id, rf'{excel_file_path}')  
         # split_status = True
 
         output_folder = [output_folder]

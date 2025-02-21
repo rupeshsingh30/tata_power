@@ -168,12 +168,16 @@ def pretty_text_data(output_folder):
 
     for file in os.listdir(output_folder):
         if file.endswith('pretty.txt'):
-            # print(file)
+            print(file)
             with open(os.path.join(output_folder, file), 'r', encoding="utf-8") as raw_data:
                 data = raw_data.readlines()
                 data2 = ' '.join(data)
                 # print(data2,'\n')
                 if ('Description' in data2 and 'Quantity' in data2 and 'Unit Rate' in data2 and 'Amount' in data2 and 'Invoice' in data2):
+                    print('condition 1')
+                    a = type1(data)
+                    return a
+                elif ('Description' in data2 and 'Quantity' in data2 and 'Rate' in data2 and 'Amount' in data2 and 'Invoice' in data2):
                     print('condition 1')
                     a = type1(data)
                     return a
@@ -209,8 +213,10 @@ def sale_invoice(file_name,text,res_para,output_folder,db_conn,category,excel_id
     # if result["buyerName"] == None or  result["buyerAddress"] == None or result['vendorName'] == None or result['vendorAddress'] == None:
     #     result = ask_qa(text,prompt,schema)
         
-    if result == {}:
+    if result == {} or result == '':
         result = ask_qa(text,prompt,schema)
+        # if result == {}:
+        #     result = ask_qa(text,prompt,schema)
 
     print('result :-',result)
 

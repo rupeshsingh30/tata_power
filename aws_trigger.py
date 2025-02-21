@@ -1,5 +1,6 @@
 import sys
-sys.path.append(r"C:\Users\Admin\AppData\Local\Programs\Python\Python310\Lib\site-packages\aws_lib_")
+# sys.path.append(r"C:\Users\Admin\AppData\Local\Programs\Python\Python310\Lib\site-packages\aws_lib_")
+sys.path.append(r"D:\tata_power_gonda\gonda_process\aws_lib_")
 from aws_lib_.aws_ocr_main import main_call
 import os
 import re

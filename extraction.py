@@ -72,7 +72,8 @@ def checkInvoiceCategory(text, header_text, pdf_file_path, new_formats,error_fol
         'South East UP Power Transmission Private Limited',
         'south east up power transmission private limited',
         'South East 1.P. Power Transmission Company Limited',
-        'South East UP Power Transmission Co. Ltd.'
+        'South East UP Power Transmission Co. Ltd.',
+        'South East UP Power Transmesion Co. Ltd.'
     ]
 
     expected_vendor = [
@@ -131,8 +132,8 @@ def extractInvoiceInfo(pdf_file_path, text, res_para, output_folder, db_conn, ex
         'chatan gupta consultants' : charan_gupta_consultant
 
     }
-    invoice_func = func_mapping[category]
-    return invoice_func(pdf_file_path,text,res_para,output_folder,db_conn,category,excel_id)
+    # invoice_func = func_mapping[category]
+    # return invoice_func(pdf_file_path,text,res_para,output_folder,db_conn,category,excel_id)
     try:
         invoice_func = func_mapping[category]
         return invoice_func(pdf_file_path,text,res_para,output_folder,db_conn,category,excel_id)
@@ -194,6 +195,7 @@ def extraction(config, db_conn, pdf_file_path, excel_id):
 
     if status in status_folder_map:
         moveFile(pdf_file_path, status_folder_map[status])
+        # print(8)
     else:
         print(f"Unexpected status: {status}")
 
@@ -215,6 +217,9 @@ for file in os.listdir(tempFolder):
     
     fileCleaner(outputFolder)
 
-    if not extraction(config, dbConn, pdfFilePath, excel_id=6):
+    # try:
+    if not extraction(config, dbConn, pdfFilePath, excel_id=7):
         continue
+    # except:
+    #     pass
 

@@ -48,7 +48,7 @@ def fetching_invoice_number(db_conn,invoice_number):
     conn,cursor = db_conn[0],db_conn[1]
     try:
         # query1 = f''' select exists (select * from gonda_extraction_data where invoice_number = '{invoice_number}' ) '''
-        query1 = f''' select exists (select * from gonda_extraction11 where invoice_number = '{invoice_number}' ) '''
+        query1 = f''' select exists (select * from gonda_extraction23 where invoice_number = '{invoice_number}' ) '''
         cursor.execute(query1)
         status = cursor.fetchone()[0]
     except:
@@ -91,18 +91,18 @@ def insertDataFileDetails(dbConn, data):
         query = f'''INSERT INTO file_details (execution_id,excel_name,pdf_name_in_excel,page_number_in_excel,actual_pdf_name,split_pdf,status,timestamp,remark)VALUES (
         '{data[0]}', '{data[1]}', '{data[2]}', '{data[3]}', '{data[4]}', '{data[5]}', '{data[6]}', '{data[7]}','{data[8]}'
         )'''
-        # cursor.execute(query)
-        # conn.commit()
-        # print('Inserted in file details')
+        cursor.execute(query)
+        conn.commit()
+        print('Inserted in file details')
         
     except:
         conn.rollback()
         query = f'''INSERT INTO file_details (execution_id,excel_name,pdf_name_in_excel,page_number_in_excel,actual_pdf_name,split_pdf,status,timestamp,remark)VALUES (
         '{data[0]}', '{data[1]}', '{data[2]}', '{data[3]}', '{data[4]}', '{data[5]}', '{data[6]}', '{data[7]}','{data[8]}'
         )'''
-        # cursor.execute(query)
-        # conn.commit()
-        # print('Inserted in file details')
+        cursor.execute(query)
+        conn.commit()
+        print('Inserted in file details')
 
 
 
@@ -112,7 +112,7 @@ def insertGondaExtractions(db_conn,data):
     
     try:
         insert_query = '''
-        INSERT INTO gonda_extraction11 (
+        INSERT INTO gonda_extraction23 (
             buyer_name, buyer_address, buyer_pan, buyer_tin, buyer_tax_number, buyer_cst_number, seller_name, seller_address, seller_pan,seller_tin, seller_tax_number, seller_cst_number, invoice_number, invoice_date, pkg_transmission_line_ss_substation_name, supply_civil_services,
             description, unit, quantity, rate, invoice_value, vat_gst,vat, service_tax_gst,education_cess,he_education_cess,gross_value,
             advance, retention, net_value, file_name,timestamp,invoice_type
@@ -125,7 +125,7 @@ def insertGondaExtractions(db_conn,data):
     except:
         conn.rollback()
         insert_query = '''
-        INSERT INTO gonda_extraction11 (
+        INSERT INTO gonda_extraction23 (
             buyer_name, buyer_address, buyer_pan, buyer_tin, buyer_tax_number, buyer_cst_number, seller_name, seller_address, seller_pan,seller_tin, seller_tax_number, seller_cst_number, invoice_number, invoice_date, pkg_transmission_line_ss_substation_name, supply_civil_services,
             description, unit, quantity, rate, invoice_value, vat_gst,vat, service_tax_gst,education_cess,he_education_cess,gross_value,
             advance, retention, net_value, file_name,timestamp,invoice_type
@@ -151,14 +151,14 @@ def pullReport(report_folder,db_conn):
     
     conn,cursor = db_conn[0],db_conn[1]
     todays_date = str(datetime.now().strftime('%Y-%m-%d'))
-    # input_df = pd.read_sql_query(f''' select * from gonda_extraction11 where timestamp like '%{todays_date}%' ''',con=conn)
-    input_df = pd.read_sql_query(f''' select * from gonda_extraction11 where invoice_type != 'new format' and invoice_type != 'error' ''',con=conn)
-    input_df.to_excel(rf'{report_folder}'+'\\'+'report.xlsx',index=False)
+    # input_df = pd.read_sql_query(f''' select * from gonda_extraction23 where timestamp like '%{todays_date}%' ''',con=conn)
+    input_df = pd.read_sql_query(f''' select * from gonda_extraction23 ''',con=conn)
+    input_df.to_excel(rf'{report_folder}'+'\\'+'report_box18.xlsx',index=False)
 
 
-
-# conn,cursor = create_db_connection()
-# report_folder = r'C:\Users\Admin\Downloads\api_code\report'
-# pull_data(report_folder,conn)
+# config = loadConfig(r'D:\tata_power_gonda\gonda_process\code\app.config')
+# dbConn = dbConnection(config)
+# report_folder = r'C:\Users\Admin\Downloads'
+# pullReport(report_folder,dbConn)
     
 
